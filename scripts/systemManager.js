@@ -231,7 +231,7 @@
   function loadBudgetData() {
     const subscriptions = JSON.parse(localStorage.getItem("subscriptions")) || [];
     const reservations = JSON.parse(localStorage.getItem("reservations")) || [];
-    const equipment = JSON.parse(localStorage.getItem("equipment")) || [];
+    const equipment = JSON.parse(localStorage.getItem("gymEquipment")) || [];
 
     // Calculate income
     let subRevenue = 0;
@@ -247,13 +247,19 @@
 
     const totalIncome = subRevenue + resRevenue;
 
-    // Calculate expenses
+    // Calculate expenses from equipment records
     let maintenanceCosts = 0;
     let repairCosts = 0;
 
     equipment.forEach((item) => {
-      if (item.maintenanceCost) maintenanceCosts += parseFloat(item.maintenanceCost);
-      if (item.repairCost) repairCosts += parseFloat(item.repairCost);
+      const records = item.records || [];
+      records.forEach((rec) => {
+        if (rec.type === "maintenance") {
+          maintenanceCosts += parseFloat(rec.cost) || 0;
+        } else if (rec.type === "repair") {
+          repairCosts += parseFloat(rec.cost) || 0;
+        }
+      });
     });
 
     const totalExpenses = maintenanceCosts + repairCosts;
@@ -308,7 +314,8 @@
   // ─────────────────────────────────────────────────────
 
   function loadEquipmentOverview() {
-    const equipment = JSON.parse(localStorage.getItem("equipment")) || [];
+    // Equipment is stored under "gymEquipment" key in localStorage
+    const equipment = JSON.parse(localStorage.getItem("gymEquipment")) || [];
     const overviewDiv = document.getElementById("equipment-overview");
 
     if (!overviewDiv) return;
@@ -318,30 +325,41 @@
       return;
     }
 
-    let totalCost = 0;
     let maintenanceCost = 0;
     let repairCost = 0;
 
     const status = {
-      operational: 0,
-      maintenance: 0,
-      repair: 0,
+      "Operational": 0,
+      "Under Maintenance": 0,
+      "Under Repair": 0,
+      "Out of Service": 0,
     };
 
     equipment.forEach((item) => {
-      if (item.price) totalCost += parseFloat(item.price);
-      if (item.maintenanceCost) maintenanceCost += parseFloat(item.maintenanceCost);
-      if (item.repairCost) repairCost += parseFloat(item.repairCost);
+      // Calculate costs from records array
+      const records = item.records || [];
+      records.forEach((rec) => {
+        if (rec.type === "maintenance") {
+          maintenanceCost += parseFloat(rec.cost) || 0;
+        } else if (rec.type === "repair") {
+          repairCost += parseFloat(rec.cost) || 0;
+        }
+      });
 
-      const itemStatus = item.status || "operational";
-      if (status[itemStatus] !== undefined) status[itemStatus]++;
+      // Count equipment by status
+      const itemStatus = item.status || "Operational";
+      if (status[itemStatus] !== undefined) {
+        status[itemStatus]++;
+      }
     });
+
+    const totalCost = maintenanceCost + repairCost;
 
     const summary = `
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 16px 0;">
         <div class="budget-card card-green">
-          <div class="bcard-label">Total Equipment Value</div>
-          <div class="bcard-value">${totalCost.toFixed(2)} ₺</div>
+          <div class="bcard-label">Total Equipment Items</div>
+          <div class="bcard-value">${equipment.length}</div>
         </div>
         <div class="budget-card card-red">
           <div class="bcard-label">Maintenance Costs</div>
@@ -351,17 +369,25 @@
           <div class="bcard-label">Repair Costs</div>
           <div class="bcard-value">${repairCost.toFixed(2)} ₺</div>
         </div>
+        <div class="budget-card card-purple">
+          <div class="bcard-label">Total Cost</div>
+          <div class="bcard-value">${totalCost.toFixed(2)} ₺</div>
+        </div>
         <div class="budget-card card-blue">
           <div class="bcard-label">Operational</div>
-          <div class="bcard-value">${status.operational}</div>
+          <div class="bcard-value">${status["Operational"]}</div>
         </div>
         <div class="budget-card card-yellow">
           <div class="bcard-label">Under Maintenance</div>
-          <div class="bcard-value">${status.maintenance}</div>
+          <div class="bcard-value">${status["Under Maintenance"]}</div>
         </div>
         <div class="budget-card card-gray">
-          <div class="bcard-label">Repair Pending</div>
-          <div class="bcard-value">${status.repair}</div>
+          <div class="bcard-label">Under Repair</div>
+          <div class="bcard-value">${status["Under Repair"]}</div>
+        </div>
+        <div class="budget-card card-dark">
+          <div class="bcard-label">Out of Service</div>
+          <div class="bcard-value">${status["Out of Service"]}</div>
         </div>
       </div>
     `;
