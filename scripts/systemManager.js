@@ -229,18 +229,19 @@
   // ─────────────────────────────────────────────────────
 
   function loadBudgetData() {
-    const subscriptions = JSON.parse(localStorage.getItem("subscriptions")) || [];
+    // Read subscription payments from global payment log
+    const subscriptionPayments = JSON.parse(localStorage.getItem("subscriptionPayments")) || [];
     const reservations = JSON.parse(localStorage.getItem("reservations")) || [];
     const equipment = JSON.parse(localStorage.getItem("gymEquipment")) || [];
 
-    // Calculate income
+    // Calculate income from subscription payments
     let subRevenue = 0;
-    let resRevenue = 0;
-
-    subscriptions.forEach((sub) => {
-      if (sub.price) subRevenue += parseFloat(sub.price);
+    subscriptionPayments.forEach((payment) => {
+      if (payment.amount) subRevenue += parseFloat(payment.amount);
     });
 
+    // Calculate income from reservations
+    let resRevenue = 0;
     reservations.forEach((res) => {
       if (res.price) resRevenue += parseFloat(res.price);
     });
@@ -273,7 +274,7 @@
     updateBudgetCard("budget-net", netBalance);
 
     // Load subscription payments
-    loadSubscriptionPayments(subscriptions);
+    loadSubscriptionPayments(subscriptionPayments);
   }
 
   function updateBudgetCard(elementId, value) {
@@ -283,26 +284,24 @@
     }
   }
 
-  function loadSubscriptionPayments(subscriptions) {
+  function loadSubscriptionPayments(subscriptionPayments) {
     const tbody = document.getElementById("sub-payments-body");
     if (!tbody) return;
 
-    if (subscriptions.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="7">No subscription payments yet.</td></tr>';
+    if (subscriptionPayments.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="5">No subscription payments yet.</td></tr>';
       return;
     }
 
-    tbody.innerHTML = subscriptions
+    tbody.innerHTML = subscriptionPayments
       .map(
-        (sub) => `
+        (payment) => `
         <tr>
-          <td>${sanitize(sub.username || "N/A")}</td>
-          <td>${sanitize(sub.package || "N/A")}</td>
-          <td>${sanitize(sub.duration || "N/A")}</td>
-          <td>${sanitize(sub.startDate || "N/A")}</td>
-          <td>${sanitize(sub.expiryDate || "N/A")}</td>
-          <td>${sub.price || 0} ₺</td>
-          <td>${sanitize(sub.purchaseDate || "N/A")}</td>
+          <td>${sanitize(payment.username || "N/A")}</td>
+          <td>${sanitize(payment.packageName || "N/A")}</td>
+          <td>${payment.amount || 0} ₺</td>
+          <td>${sanitize(payment.startDate || "N/A")}</td>
+          <td>${sanitize(payment.paidAt || "N/A")}</td>
         </tr>
       `
       )
@@ -325,74 +324,58 @@
       return;
     }
 
-    let maintenanceCost = 0;
-    let repairCost = 0;
+    // Create table with equipment list
+    const rows = equipment
+      .map(
+        (item) => `
+        <tr>
+          <td>${sanitize(item.name)}</td>
+          <td>${sanitize(item.type)}</td>
+          <td>${sanitize(item.serialNumber || "N/A")}</td>
+          <td>${sanitize(item.purchaseDate || "N/A")}</td>
+          <td><span class="status-badge status-${item.status.toLowerCase().replace(/ /g, "-")}">${item.status}</span></td>
+          <td>${(item.records || []).length}</td>
+        </tr>
+      `
+      )
+      .join("");
 
-    const status = {
-      "Operational": 0,
-      "Under Maintenance": 0,
-      "Under Repair": 0,
-      "Out of Service": 0,
-    };
-
-    equipment.forEach((item) => {
-      // Calculate costs from records array
-      const records = item.records || [];
-      records.forEach((rec) => {
-        if (rec.type === "maintenance") {
-          maintenanceCost += parseFloat(rec.cost) || 0;
-        } else if (rec.type === "repair") {
-          repairCost += parseFloat(rec.cost) || 0;
+    const tableHTML = `
+      <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+        <thead>
+          <tr style="background-color: #f5f5f5; border-bottom: 2px solid #ddd;">
+            <th style="padding: 12px; text-align: left; font-weight: bold;">Name</th>
+            <th style="padding: 12px; text-align: left; font-weight: bold;">Type</th>
+            <th style="padding: 12px; text-align: left; font-weight: bold;">Serial Number</th>
+            <th style="padding: 12px; text-align: left; font-weight: bold;">Purchase Date</th>
+            <th style="padding: 12px; text-align: left; font-weight: bold;">Status</th>
+            <th style="padding: 12px; text-align: center; font-weight: bold;">Records</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows}
+        </tbody>
+      </table>
+      <style>
+        table tbody tr { border-bottom: 1px solid #eee; }
+        table tbody tr:hover { background-color: #f9f9f9; }
+        table td { padding: 12px; }
+        .status-badge {
+          display: inline-block;
+          padding: 6px 12px;
+          border-radius: 4px;
+          font-size: 12px;
+          font-weight: bold;
+          color: white;
         }
-      });
-
-      // Count equipment by status
-      const itemStatus = item.status || "Operational";
-      if (status[itemStatus] !== undefined) {
-        status[itemStatus]++;
-      }
-    });
-
-    const totalCost = maintenanceCost + repairCost;
-
-    const summary = `
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 16px 0;">
-        <div class="budget-card card-green">
-          <div class="bcard-label">Total Equipment Items</div>
-          <div class="bcard-value">${equipment.length}</div>
-        </div>
-        <div class="budget-card card-red">
-          <div class="bcard-label">Maintenance Costs</div>
-          <div class="bcard-value">${maintenanceCost.toFixed(2)} ₺</div>
-        </div>
-        <div class="budget-card card-orange">
-          <div class="bcard-label">Repair Costs</div>
-          <div class="bcard-value">${repairCost.toFixed(2)} ₺</div>
-        </div>
-        <div class="budget-card card-purple">
-          <div class="bcard-label">Total Cost</div>
-          <div class="bcard-value">${totalCost.toFixed(2)} ₺</div>
-        </div>
-        <div class="budget-card card-blue">
-          <div class="bcard-label">Operational</div>
-          <div class="bcard-value">${status["Operational"]}</div>
-        </div>
-        <div class="budget-card card-yellow">
-          <div class="bcard-label">Under Maintenance</div>
-          <div class="bcard-value">${status["Under Maintenance"]}</div>
-        </div>
-        <div class="budget-card card-gray">
-          <div class="bcard-label">Under Repair</div>
-          <div class="bcard-value">${status["Under Repair"]}</div>
-        </div>
-        <div class="budget-card card-dark">
-          <div class="bcard-label">Out of Service</div>
-          <div class="bcard-value">${status["Out of Service"]}</div>
-        </div>
-      </div>
+        .status-operational { background-color: #27ae60; }
+        .status-under-maintenance { background-color: #f39c12; }
+        .status-under-repair { background-color: #e74c3c; }
+        .status-out-of-service { background-color: #95a5a6; }
+      </style>
     `;
 
-    overviewDiv.innerHTML = summary;
+    overviewDiv.innerHTML = tableHTML;
   }
 
   // ─────────────────────────────────────────────────────
