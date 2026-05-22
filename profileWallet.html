@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile &amp; Wallet — Gym Management System</title>
+    <link rel="stylesheet" href="styleSheets/profileWallet.css" />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+          <span class="logo-icon">🏋️</span>
+          <span class="logo-text">GymSys</span>
+        </div>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="profileWallet.html" id="profile-id">Profile &amp; Wallet</a></li>
+          <li><a href="subscriptions.html">Membership Packages</a></li>
+          <li><a href="reservationTimes.html">Reservations &amp; Times</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="aboutUs.html">About Us &amp; Feedback</a></li>
+          <li class="login-logout">
+            <a href="login.html"><span class="login-logout-link">Login</span></a>
+          </li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <button class="toggle-btn" onclick="document.getElementById('sidebar').classList.toggle('active')">☰</button>
+        <div class="main-container">
+          <h1>Profile &amp; Wallet</h1>
+
+          <!-- Profile Picture -->
+          <div class="profile-pic-container">
+            <label for="profile-pic" class="profile-pic-label">
+              <div class="fallback-text" id="fallback-text">Add Photo</div>
+              <img id="profile-image" src="" alt="Profile Picture" />
+              <div class="upload-overlay">Change</div>
+              <input type="file" id="profile-pic" accept="image/*" hidden />
+            </label>
+          </div>
+
+          <!-- User Info -->
+          <div class="user-info">
+            <label>Name / Surname</label>
+            <p class="user-name-p"></p>
+            <label>Email</label>
+            <p class="user-email-p"></p>
+            <label>Phone</label>
+            <p class="user-phone-p"></p>
+            <label>Date of Birth</label>
+            <p class="user-dob-p"></p>
+          </div>
+
+          <!-- Wallet -->
+          <div class="wallet">
+            <h2>Wallet Balance: <span id="balance"></span> <span id="currency">₺</span></h2>
+            <p class="wallet-note">Use your wallet balance to pay for membership subscriptions.</p>
+            <button id="add-deposit-btn">Deposit Funds</button>
+          </div>
+
+          <!-- Medical Report -->
+          <div class="profile-section">
+            <h2>Medical Fitness Report</h2>
+            <p class="section-note">
+              A valid doctor's certificate is required before subscribing to any membership package.
+              Reports expire <strong>1 year</strong> from the issue date.
+            </p>
+            <div id="medical-status-card" class="status-card">
+              <span id="medical-status-text">No report on file.</span>
+            </div>
+            <div class="simple-form">
+              <h3 id="medical-form-title">Add Medical Report</h3>
+              <label for="medical-issue-date">Issue Date</label>
+              <input type="date" id="medical-issue-date" />
+              <label for="medical-issuer">Doctor / Institution</label>
+              <input type="text" id="medical-issuer" placeholder="e.g. Dr. Ayşe Kaya" />
+              <button id="save-medical-btn">Save Report</button>
+            </div>
+          </div>
+
+          <!-- Current Subscription -->
+          <div class="profile-section">
+            <h2>Current Membership</h2>
+            <div id="sub-summary-card" class="status-card">
+              No active membership. <a href="subscriptions.html">View packages →</a>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="scripts/profileWallet.js"></script>
+    <script type="module" src="scripts/LoginUtility.js"></script>
+  </body>
+</html>

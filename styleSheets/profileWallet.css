@@ -1,0 +1,443 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container */
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #1e3a5f;
+    color: white;
+    padding: 20px;
+    height: 100;
+    transition: width 0.3s;
+    padding-top: 20px;
+    overflow: hidden;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-top: 20px;
+    position: fixed;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #3b6ea581;
+}
+
+/* Sidebar Toggle */
+.toggle-btn {
+    background-color: #1e3a5f;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bolder;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-radius: 5px;
+    position: fixed;
+}
+
+.toggle-btn:hover {
+    background-color: #3b6ea5;
+}
+
+.sidebar.active {
+    width: 50px;
+}
+
+.sidebar.active ul {
+    display: none;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+main .main-container{
+    width: 50vw;
+    height: 100vh;
+    background-color: hsla(210, 73%, 80%, 0.315);
+    border-radius: 20px
+}
+
+
+/* Profile Picture Container */
+.profile-pic-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Circle Wrapper */
+.profile-pic-label {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #3498db;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background: #f0f0f0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Fallback Text */
+.fallback-text {
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    text-align: center;
+}
+
+/* Profile Image */
+.profile-pic-label img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: none; /* Initially hidden */
+}
+
+/* Hover Overlay */
+.upload-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.profile-pic-label:hover .upload-overlay {
+    opacity: 1;
+}
+
+/* User Info */
+.user-info {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.user-info label {
+    display: block;
+    font-weight: 500;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+.user-info p {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+
+
+/* Wallet */
+.wallet {
+    background: linear-gradient(135deg, #3498db, #8e44ad);
+    padding: 15px;
+    width: 80%;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.wallet h2 {
+    margin-bottom: 10px;
+}
+
+.wallet #add-deposit-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+.wallet #add-deposit-btn:hover {
+    background: #2ecc71;
+}
+
+
+#balance, #currency{
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+
+
+#profile-id{
+    background-color: #3b6ea5;
+}
+
+.enter-amount-container {
+    display: flex;
+    place-content: center;
+    gap: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .enter-amount-container input {
+    padding: 8px;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  .enter-amount-container input:focus {
+    border-color: #007bff;
+  }
+  
+  .enter-amount-container button {
+    padding: 8px 12px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .enter-amount-container button:hover {
+    background: #2ecc71;
+  }
+
+  @layer base {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+
+
+
+
+/* ── Medical Report Section ───────────────────────────── */
+.medical-report-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.medical-report-section h2 {
+  color: #1e3a5f;
+  margin-bottom: 8px;
+}
+
+.medical-info-text {
+  color: #666;
+  font-size: 0.88rem;
+  margin-bottom: 14px;
+}
+
+.medical-status-card {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background: #f5f5f5;
+  border-left: 4px solid #aaa;
+}
+
+.medical-status-card.valid   { background: #e8f5e9; border-left-color: #4caf50; color: #2e7d32; }
+.medical-status-card.expiring { background: #fff3e0; border-left-color: #ff9800; color: #e65100; }
+.medical-status-card.expired  { background: #fdecea; border-left-color: #e53935; color: #c62828; }
+.medical-status-card.missing  { background: #fafafa; border-left-color: #999; color: #555; }
+
+.medical-form label { font-size: 0.88rem; color: #555; font-weight: 600; }
+.medical-form input[type="date"] {
+  display: block; margin-top: 4px; padding: 8px;
+  border: 1px solid #ccc; border-radius: 6px; width: 100%; max-width: 260px;
+}
+
+#save-medical-btn {
+  margin-top: 10px;
+  padding: 10px 22px;
+  background: #1e3a5f;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+}
+#save-medical-btn:hover { background: #345a8b; }
+
+/* ── Subscription Summary ─────────────────────────────── */
+.subscription-summary-section {
+  margin-top: 24px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.subscription-summary-section h2 { color: #1e3a5f; margin-bottom: 10px; }
+
+.sub-summary-card {
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: #f0f4ff;
+  border-left: 4px solid #1565c0;
+}
+.sub-summary-card a { color: #1565c0; }
+
+/* ── Profile sections (medical, subscription) ─────────────── */
+.profile-section {
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px 20px;
+  text-align: left;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.09);
+}
+
+.profile-section h2 {
+  color: #1e3a5f;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.section-note {
+  font-size: 0.82rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+/* Status cards */
+.status-card {
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  border-left: 4px solid #aaa;
+  background: #f5f5f5;
+  color: #555;
+  margin-bottom: 14px;
+}
+.status-card.valid    { background: #e8f5e9; border-color: #4caf50; color: #2e5e30; }
+.status-card.expiring { background: #fff8e1; border-color: #f0a500; color: #7a5200; }
+.status-card.expired  { background: #fdecea; border-color: #e53935; color: #7a1a1a; }
+.status-card a        { color: #1e3a5f; }
+
+/* Simple form inside profile sections */
+.simple-form { display: flex; flex-direction: column; gap: 6px; max-width: 340px; }
+.simple-form h3 { font-size: 0.9rem; color: #444; margin-bottom: 4px; }
+.simple-form label { font-size: 0.82rem; font-weight: 600; color: #555; }
+.simple-form input[type="date"],
+.simple-form input[type="text"] {
+  padding: 7px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.88rem;
+}
+#save-medical-btn {
+  margin-top: 6px;
+  padding: 9px 18px;
+  background: #1e3a5f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: bold;
+  align-self: flex-start;
+}
+#save-medical-btn:hover { background: #345a8b; }
+
+/* User info phone/dob rows */
+.user-phone-p, .user-dob-p { font-style: italic; color: #888; }
+
+/* ── Sidebar logo (added for gym branding) ──────── */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 16px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  margin-bottom: 6px;
+}
+.logo-icon { font-size: 1.5rem; }
+.logo-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #e8c04a;
+}
+
+/* ── wallet note ────────────────────────────────── */
+.wallet-note {
+  font-size: 0.82rem;
+  color: #666;
+  margin-bottom: 10px;
+}

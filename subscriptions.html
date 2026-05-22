@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Membership Packages — Gym Management System</title>
+  <link rel="stylesheet" href="styleSheets/index.css" />
+  <link rel="stylesheet" href="styleSheets/subscriptions.css" />
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-icon">🏋️</span>
+      <span class="logo-text">GymSys</span>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li class="show-after-login"><a href="profileWallet.html">Profile &amp; Wallet</a></li>
+      <li class="show-after-login"><a href="subscriptions.html" style="background:#3b6ea5;color:#fff;">Membership Packages</a></li>
+      <li class="show-after-login"><a href="reservationTimes.html">Reservations &amp; Times</a></li>
+      <li class="show-after-login"><a href="cart.html">Cart</a></li>
+      <li><a href="aboutUs.html">About Us &amp; Feedback</a></li>
+      <li class="login-logout"><a href="login.html"><span class="login-logout-link">Login</span></a></li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+    <div class="page-wrap">
+      <h1>Membership Packages</h1>
+
+      <!-- Medical warning -->
+      <div id="medical-warning" class="info-box warning hidden">
+        ⚠️ You need a valid medical fitness report before subscribing.
+        <a href="profileWallet.html">Add it in your profile →</a>
+      </div>
+
+      <!-- Current subscription -->
+      <div id="current-sub-box" class="info-box success hidden"></div>
+
+      <!-- Package selection table -->
+      <h2>Available Packages</h2>
+      <table class="package-table">
+        <thead>
+          <tr>
+            <th>Package</th>
+            <th>Access Days</th>
+            <th>Price / Month</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="row-2days">
+            <td><strong>2 Days / Week</strong></td>
+            <td>Any 2 days you choose</td>
+            <td>600 ₺</td>
+            <td><button class="select-btn" data-pkg="2days">Select</button></td>
+          </tr>
+          <tr id="row-3days">
+            <td><strong>3 Days / Week</strong></td>
+            <td>Any 3 days you choose</td>
+            <td>850 ₺</td>
+            <td><button class="select-btn" data-pkg="3days">Select</button></td>
+          </tr>
+          <tr id="row-timeslot">
+            <td><strong>Daily (Fixed Time)</strong></td>
+            <td>Every day, Mon–Sat, one fixed hour</td>
+            <td>1,100 ₺</td>
+            <td><button class="select-btn" data-pkg="timeslot">Select</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Subscribe form -->
+      <div id="subscribe-form" class="subscribe-form hidden">
+        <h2 id="form-title">Subscribe</h2>
+
+        <div id="day-picker" class="hidden">
+          <p id="day-picker-label">Choose your days:</p>
+          <div id="day-checkboxes">
+            <label><input type="checkbox" value="Monday" /> Monday</label>
+            <label><input type="checkbox" value="Tuesday" /> Tuesday</label>
+            <label><input type="checkbox" value="Wednesday" /> Wednesday</label>
+            <label><input type="checkbox" value="Thursday" /> Thursday</label>
+            <label><input type="checkbox" value="Friday" /> Friday</label>
+            <label><input type="checkbox" value="Saturday" /> Saturday</label>
+          </div>
+        </div>
+
+        <div id="timeslot-picker" class="hidden">
+          <label for="timeslot-select">Choose your daily time slot:</label><br />
+          <select id="timeslot-select">
+            <option value="">-- Select a time --</option>
+            <option value="07:00-08:00">07:00 – 08:00</option>
+            <option value="08:00-09:00">08:00 – 09:00</option>
+            <option value="09:00-10:00">09:00 – 10:00</option>
+            <option value="10:00-11:00">10:00 – 11:00</option>
+            <option value="11:00-12:00">11:00 – 12:00</option>
+            <option value="14:00-15:00">14:00 – 15:00</option>
+            <option value="15:00-16:00">15:00 – 16:00</option>
+            <option value="16:00-17:00">16:00 – 17:00</option>
+            <option value="17:00-18:00">17:00 – 18:00</option>
+            <option value="18:00-19:00">18:00 – 19:00</option>
+            <option value="19:00-20:00">19:00 – 20:00</option>
+          </select>
+        </div>
+
+        <p id="form-price-info" style="margin-top:12px; color:#555;"></p>
+        <button id="confirm-subscribe-btn">Confirm Subscription</button>
+        <button id="cancel-select-btn" style="margin-left:10px;">Cancel</button>
+      </div>
+
+      <!-- Subscription history -->
+      <h2 style="margin-top:32px;">My Subscription History</h2>
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>Package</th>
+            <th>Days / Slot</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Amount Paid</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="history-body">
+          <tr><td colspan="6">No subscription history yet.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+</script>
+<script type="module" src="scripts/subscriptions.js"></script>
+</body>
+</html>

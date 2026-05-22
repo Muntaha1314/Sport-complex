@@ -1,0 +1,147 @@
+/* sysManagerExtended.css */
+
+body { background: #f4f4f4; }
+
+.dashboard-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+  background: transparent;
+  box-shadow: none;
+  text-align: left;
+}
+
+.dashboard-container h1 { color: #1e3a5f; font-size: 1.5rem; margin-bottom: 6px; }
+
+#logout-btn {
+  position: fixed;
+  top: 16px; right: 20px;
+  background: #e53935; color: #fff;
+  border: none; padding: 8px 16px;
+  cursor: pointer; border-radius: 5px; font-size: 0.88rem;
+}
+#logout-btn:hover { background: #c62828; }
+
+/* Tabs */
+.tabs {
+  display: flex; gap: 4px; flex-wrap: wrap;
+  border-bottom: 2px solid #1e3a5f;
+  margin: 18px 0 0; padding-bottom: 0;
+}
+.tab-btn {
+  padding: 9px 18px; border: none; background: #e8edf5;
+  color: #1e3a5f; cursor: pointer; font-size: 0.88rem; font-weight: 600;
+  border-radius: 6px 6px 0 0;
+}
+.tab-btn:hover { background: #d0daf0; }
+.tab-btn.active { background: #1e3a5f; color: #fff; }
+.tab-content { display: none; padding: 20px 0; }
+.tab-content.active { display: block; }
+
+/* Section wrapper */
+.tab-content section { background: #fff; border-radius: 8px; padding: 18px 20px; border: 1px solid #ddd; margin-bottom: 16px; }
+.tab-content section h2 { color: #1e3a5f; font-size: 1rem; margin-bottom: 12px; }
+.tab-content section h3 { color: #1e3a5f; font-size: 0.9rem; margin: 18px 0 8px; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-size: 0.87rem; margin-top: 4px; }
+th { background: #1e3a5f; color: #fff; padding: 9px 10px; text-align: center; }
+td { padding: 9px 10px; border: 1px solid #eee; text-align: center; }
+tr:nth-child(even) td { background: #f9f9f9; }
+tr:hover td { background: #f0f4ff; }
+
+/* Filters */
+.filter-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+.filter-row label { font-size: 0.85rem; font-weight: 600; color: #444; }
+.filter-row select { margin-left: 6px; padding: 6px 9px; border: 1px solid #ccc; border-radius: 5px; font-size: 0.85rem; }
+
+/* Medical status badges */
+.med-valid    { color: #2e5e30; font-weight: bold; }
+.med-expiring { color: #7a5200; font-weight: bold; }
+.med-expired  { color: #7a1a1a; font-weight: bold; }
+.med-missing  { color: #999; }
+
+/* Budget cards */
+.budget-cards {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px; margin-bottom: 20px;
+}
+.b-card {
+  border-radius: 8px; padding: 14px; text-align: center; color: #fff;
+}
+.b-label { font-size: 0.75rem; opacity: 0.85; margin-bottom: 5px; }
+.b-val { font-size: 1.35rem; font-weight: bold; }
+.bc-green  { background: #2e7d32; }
+.bc-blue   { background: #1565c0; }
+.bc-purple { background: #6a1b9a; }
+.bc-red    { background: #b71c1c; }
+.bc-dark   { background: #1e3a5f; }
+
+/* Equipment link */
+.goto-btn {
+  display: inline-block; padding: 10px 20px; background: #1e3a5f;
+  color: #fff; border-radius: 6px; text-decoration: none;
+  font-size: 0.9rem; font-weight: bold;
+}
+.goto-btn:hover { background: #345a8b; }
+
+/* Mini equipment grid */
+.eq-mini-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-top: 14px; }
+.eq-mini-card { background: #f4f6f9; border: 1px solid #ddd; border-radius: 6px; padding: 10px 12px; font-size: 0.83rem; }
+.eq-mini-name { font-weight: bold; color: #1e3a5f; margin-bottom: 3px; }
+
+/* Feedback list */
+.feedback ul { list-style: none; padding: 0; margin-top: 8px; }
+.feedback li { background: #f4f6f9; padding: 9px 12px; margin-bottom: 6px; border-radius: 5px; border-left: 3px solid #1e3a5f; font-size: 0.88rem; }
+
+/* ── Budget summary row (override/extend) ──────────── */
+.budget-summary-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.budget-card {
+  flex: 1;
+  min-width: 140px;
+  border-radius: 8px;
+  padding: 16px 14px;
+  color: #fff;
+  text-align: center;
+}
+.bcard-label { font-size: 0.75rem; opacity: 0.85; margin-bottom: 6px; }
+.bcard-value { font-size: 1.3rem; font-weight: 700; }
+
+.card-green  { background: #2e7d32; }
+.card-blue   { background: #1565c0; }
+.card-purple { background: #6a1b9a; }
+.card-red    { background: #b71c1c; }
+.card-orange { background: #e65100; }
+.card-dark   { background: #1e3a5f; }
+
+.section-sub-title {
+  font-size: 0.95rem;
+  color: #1e3a5f;
+  margin: 20px 0 8px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+/* Equipment status mini badges */
+.eq-mini-status { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+.sOp  { background: #c8e6c9; color: #1b5e20; }
+.sMnt { background: #fff3e0; color: #e65100; }
+.sRep { background: #fce4ec; color: #880e4f; }
+.sOut { background: #f5f5f5; color: #757575; }
+
+.goto-equipment-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #1e3a5f;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.goto-equipment-btn:hover { background: #345a8b; }

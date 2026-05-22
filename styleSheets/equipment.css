@@ -1,0 +1,78 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; background: #f4f4f4; min-height: 100vh; }
+
+.eq-page { max-width: 1000px; margin: 0 auto; padding: 24px 20px 40px; }
+
+/* Header */
+.eq-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+.eq-header h1 { color: #1e3a5f; font-size: 1.5rem; }
+.back-link { color: #1e3a5f; text-decoration: none; font-size: 0.9rem; background: #fff; padding: 7px 14px; border-radius: 5px; border: 1px solid #ccc; }
+.back-link:hover { background: #e8efff; }
+
+/* Summary */
+.summary-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.sum-card { background: #fff; border-radius: 8px; padding: 14px; text-align: center; border: 1px solid #ddd; }
+.sum-label { font-size: 0.78rem; color: #888; margin-bottom: 5px; }
+.sum-val { font-size: 1.4rem; font-weight: bold; color: #1e3a5f; }
+.sum-highlight { background: #1e3a5f; }
+.sum-highlight .sum-label { color: #aac; }
+.sum-highlight .sum-val { color: #fff; }
+
+/* Cards */
+.eq-card { background: #fff; border-radius: 8px; padding: 18px 20px; margin-bottom: 16px; border: 1px solid #ddd; }
+.eq-card h2 { color: #1e3a5f; font-size: 1rem; margin-bottom: 14px; }
+.eq-card h3 { color: #1e3a5f; font-size: 0.95rem; margin-bottom: 10px; }
+
+/* Forms */
+.form-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.form-group { display: flex; flex-direction: column; gap: 4px; min-width: 160px; flex: 1; }
+.form-group label { font-size: 0.82rem; font-weight: 600; color: #555; }
+.form-group input, .form-group select {
+  padding: 7px 9px; border: 1px solid #ccc; border-radius: 5px; font-size: 0.88rem;
+}
+
+#add-equipment-btn, #save-record-btn, #update-status-btn {
+  padding: 8px 18px; background: #1e3a5f; color: #fff;
+  border: none; border-radius: 5px; cursor: pointer; font-size: 0.88rem;
+}
+#add-equipment-btn:hover, #save-record-btn:hover, #update-status-btn:hover { background: #345a8b; }
+
+/* Equipment table */
+#equipment-list table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+#equipment-list th { background: #1e3a5f; color: #fff; padding: 9px 10px; text-align: left; }
+#equipment-list td { padding: 9px 10px; border-bottom: 1px solid #eee; }
+#equipment-list tr:hover td { background: #f5f7ff; }
+
+.badge { display: inline-block; padding: 2px 9px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; }
+.b-op  { background: #e8f5e9; color: #2e5e30; }
+.b-mnt { background: #fff8e1; color: #7a5200; }
+.b-rep { background: #e3f2fd; color: #1a4a7a; }
+.b-out { background: #fdecea; color: #7a1a1a; }
+
+.rec-btn { padding: 4px 12px; background: #1e3a5f; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+.del-btn { padding: 4px 10px; background: #e53935; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+
+/* Modal */
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 100; }
+.modal {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  z-index: 101; background: #fff; border-radius: 10px;
+  width: 90%; max-width: 800px; max-height: 88vh; overflow-y: auto;
+  padding: 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+.modal-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.modal-top h2 { color: #1e3a5f; }
+#close-modal { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #555; }
+.modal-info { font-size: 0.85rem; color: #666; margin-bottom: 14px; background: #f4f6f9; padding: 8px 12px; border-radius: 5px; }
+
+/* Records table */
+.rec-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 8px; }
+.rec-table th { background: #1e3a5f; color: #fff; padding: 8px 10px; text-align: center; }
+.rec-table td { padding: 8px 10px; border: 1px solid #eee; text-align: center; }
+.rec-table tr:nth-child(even) td { background: #f9f9f9; }
+.t-maint { color: #7a5200; font-weight: bold; }
+.t-repair { color: #1a4a7a; font-weight: bold; }
+.rec-totals { text-align: right; font-size: 0.85rem; color: #444; margin-top: 8px; }
+
+.empty-msg { color: #999; text-align: center; padding: 16px 0; }
+.hidden { display: none !important; }

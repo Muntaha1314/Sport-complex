@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart — Gym Management System</title>
+  <link rel="stylesheet" href="styleSheets/index.css" />
+  <link rel="stylesheet" href="styleSheets/cart.css" />
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-icon">🏋️</span>
+      <span class="logo-text">GymSys</span>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li class="show-after-login"><a href="profileWallet.html">Profile &amp; Wallet</a></li>
+      <li class="show-after-login"><a href="subscriptions.html">Membership Packages</a></li>
+      <li class="show-after-login"><a href="reservationTimes.html">Reservations &amp; Times</a></li>
+      <li class="show-after-login"><a href="cart.html" style="background:#3b6ea5;color:#fff;">Cart (<span class="cart-count">0</span>)</a></li>
+      <li><a href="aboutUs.html">About Us &amp; Feedback</a></li>
+      <li class="login-logout"><a href="login.html"><span class="login-logout-link">Login</span></a></li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+    <div class="page-wrap">
+      <h1>🛒 My Cart</h1>
+      <p class="page-desc">Review your pending reservations below. Confirm and pay from your wallet to finalize bookings.</p>
+
+      <!-- Empty state -->
+      <div id="empty-cart" class="info-box info hidden">
+        Your cart is empty. <a href="reservationTimes.html">Browse available time slots →</a>
+      </div>
+
+      <!-- Cart table -->
+      <div id="cart-content" class="hidden">
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Sport</th>
+              <th>Date</th>
+              <th>Time Slot</th>
+              <th>Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="cart-body"></tbody>
+        </table>
+
+        <!-- Summary -->
+        <div class="cart-summary">
+          <div class="summary-row">
+            <span>Total Items:</span>
+            <span id="total-items">0</span>
+          </div>
+          <div class="summary-row summary-total">
+            <span>Total Price:</span>
+            <span id="total-price">0 ₺</span>
+          </div>
+          <div class="summary-row">
+            <span>Wallet Balance:</span>
+            <span id="wallet-balance">0 ₺</span>
+          </div>
+          <div id="balance-warning" class="balance-warning hidden">
+            ⚠️ Insufficient balance. <a href="profileWallet.html">Deposit funds →</a>
+          </div>
+          <div class="cart-actions">
+            <button id="confirm-btn" class="confirm-btn">✓ Confirm &amp; Pay</button>
+            <button id="clear-btn" class="clear-btn">Clear Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Confirmed reservations -->
+      <h2 style="margin-top:36px;">My Confirmed Reservations</h2>
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>Sport</th>
+            <th>Date</th>
+            <th>Time Slot</th>
+            <th>Amount Paid</th>
+            <th>Confirmed On</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="reservations-body">
+          <tr><td colspan="6">No confirmed reservations yet.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+</script>
+<script type="module" src="scripts/cart.js"></script>
+</body>
+</html>

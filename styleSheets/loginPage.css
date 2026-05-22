@@ -1,0 +1,129 @@
+/* Auth Container */
+.auth-container {
+    width: 350px;
+    background: hsla(210, 73%, 80%, 0.315);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 50px auto;
+}
+
+/* Toggle Buttons */
+.toggle-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.toggle-buttons button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: #ccc;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.toggle-buttons button.active {
+    background: #1e3a5f;
+    color: white;
+}
+
+/* Forms */
+.form {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Input Fields */
+.input-group {
+    margin-bottom: 15px;
+    padding-right: 10px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+
+/* Auth Buttons */
+.auth-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #1e3a5f;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.auth-btn:hover {
+    background: #3b6ea5;
+}
+
+.back-to-home {
+    color: #1e3a5f;
+    font-size: 2rem;
+}
+
+.incorrect-info-login, .incorrect-info-signup {
+    color: rgba(222, 16, 16, 0.774);
+    font-size: 1rem;
+    text-align: left;
+}
+
+/* Style the input group for better alignment */
+.login-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  /* Style the checkbox */
+  #is-manager {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #007bff; /* Blue color */
+  }
+  
+  /* Style the label */
+  .login-group label {
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  /* Add hover effect */
+  .input-group:hover label {
+    color: #007bff;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 600px) {
+    .input-group {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  
+  

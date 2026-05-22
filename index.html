@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sports Complex Management System</title>
+    <link rel="stylesheet" href="styleSheets/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+          <span class="logo-icon">🏋️</span>
+          <span class="logo-text">GymSys</span>
+        </div>
+        <ul>
+          <li><a href="index.html" id="home-link">Home</a></li>
+          <li class="show-after-login">
+            <a href="profileWallet.html">Profile &amp; Wallet</a>
+          </li>
+          <li class="show-after-login">
+            <a href="subscriptions.html">Membership Packages</a>
+          </li>
+          <li class="show-after-login">
+            <a href="reservationTimes.html">Reservations &amp; Times</a>
+          </li>
+          <li class="show-after-login">
+            <a href="cart.html">Cart</a>
+          </li>
+          <li>
+            <a href="aboutUs.html">About Us &amp; Feedback</a>
+          </li>
+          <li class="login-logout">
+            <a href="login.html"><span class="login-logout-link">Login</span></a>
+          </li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+        <div class="hero-banner">
+          <div class="hero-text">
+            <h1>Sports Complex<br>Management System</h1>
+            <p>Football, Swimming &amp; Tennis reservations, membership packages, wallet payments, equipment tracking, and medical report management — all in one place.</p>
+            <a href="login.html" class="hero-btn" id="hero-cta">Get Started</a>
+          </div>
+        </div>
+
+        <section class="feature-grid">
+          <div class="feature-card">
+            <div class="feat-icon">🪪</div>
+            <h3>Membership Packages</h3>
+            <p>Flexible subscription plans: 2 days/week, 3 days/week, or full daily access with a fixed time slot. Each package is priced separately.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">💳</div>
+            <h3>Payment Tracking</h3>
+            <p>Every subscription generates a payment record. Monitor paid, pending, and renewal payments per member from the manager dashboard.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">🩺</div>
+            <h3>Medical Report Validity</h3>
+            <p>Members must hold a valid doctor-issued fitness certificate. Reports expire after 1 year. Expired reports block new subscription activation.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">🔧</div>
+            <h3>Equipment Maintenance</h3>
+            <p>Track all gym equipment with full maintenance and repair histories. Maintenance is logged in-gym; repairs are sent to external service centers.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">📊</div>
+            <h3>Budget Planning</h3>
+            <p>The manager dashboard shows total income from subscriptions, total costs from maintenance and repairs, and the overall net balance at a glance.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">🛡️</div>
+            <h3>Manager Oversight</h3>
+            <p>System managers can view all member records, filter by medical status or subscription state, and query cost summaries for any period.</p>
+          </div>
+        </section>
+
+        <section class="packages-preview" style="margin-bottom:24px;">
+          <h2>Our Sports Facilities</h2>
+          <p style="color:#555;font-size:0.88rem;margin-bottom:16px;">Book time slots for Football, Swimming, or Tennis — open every day except Sunday.</p>
+          <div class="plan-row">
+            <div class="plan-card">
+              <div class="feat-icon" style="font-size:2.5rem;margin-bottom:6px;">⚽</div>
+              <div class="plan-name">Football</div>
+              <div class="plan-price">200 ₺<span>/hour</span></div>
+              <div class="plan-desc">1 field per slot. Reserve your match time.</div>
+              <a href="reservationTimes.html" class="reserve-btn" style="margin-top:12px;display:inline-block;">Reserve Now</a>
+            </div>
+            <div class="plan-card featured">
+              <div class="plan-badge">Popular</div>
+              <div class="feat-icon" style="font-size:2.5rem;margin-bottom:6px;">🏊</div>
+              <div class="plan-name">Swimming</div>
+              <div class="plan-price">100 ₺<span>/hour</span></div>
+              <div class="plan-desc">Up to 40 swimmers per slot.</div>
+              <a href="reservationTimes.html" class="reserve-btn" style="margin-top:12px;display:inline-block;">Reserve Now</a>
+            </div>
+            <div class="plan-card">
+              <div class="feat-icon" style="font-size:2.5rem;margin-bottom:6px;">🎾</div>
+              <div class="plan-name">Tennis</div>
+              <div class="plan-price">150 ₺<span>/hour</span></div>
+              <div class="plan-desc">1 court per slot. Book your session.</div>
+              <a href="reservationTimes.html" class="reserve-btn" style="margin-top:12px;display:inline-block;">Reserve Now</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="packages-preview">
+          <h2>Subscription Plans</h2>
+          <div class="plan-row">
+            <div class="plan-card">
+              <div class="plan-name">2 Days / Week</div>
+              <div class="plan-price">600 ₺<span>/month</span></div>
+              <div class="plan-desc">Choose any 2 fixed days per week.</div>
+            </div>
+            <div class="plan-card featured">
+              <div class="plan-badge">Popular</div>
+              <div class="plan-name">3 Days / Week</div>
+              <div class="plan-price">850 ₺<span>/month</span></div>
+              <div class="plan-desc">Choose any 3 fixed days per week.</div>
+            </div>
+            <div class="plan-card">
+              <div class="plan-name">Daily Fixed Time</div>
+              <div class="plan-price">1,100 ₺<span>/month</span></div>
+              <div class="plan-desc">Every day, Mon–Sat, one fixed hour slot.</div>
+            </div>
+          </div>
+          <p class="plans-note">A valid medical fitness report is required to activate any subscription.</p>
+        </section>
+
+      </main>
+    </div>
+
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("active");
+      }
+    </script>
+    <script src="scripts/index.js" type="module"></script>
+  </body>
+</html>

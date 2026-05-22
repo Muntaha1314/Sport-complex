@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Sign Up — Gym Management System</title>
+    <link rel="stylesheet" href="styleSheets/loginPage.css" />
+  </head>
+  <body>
+    <a href="index.html"> <span class="back-to-home">🏠︎ Home page</span></a>
+    <div class="auth-container">
+      <!-- Toggle Buttons -->
+      <div class="toggle-buttons">
+        <button id="show-login" class="active">Login</button>
+        <button id="show-signup">Sign Up</button>
+      </div>
+
+      <!-- Login Form -->
+      <div id="login-form" class="form">
+        <h2>Login</h2>
+        <form action="dashboard.html" method="POST">
+          <div class="input-group login-group">
+            <label for="login-username">Username</label>
+            <input type="text" id="login-username" name="username" required />
+          </div>
+          <div class="input-group login-group">
+            <label for="login-password">Password</label>
+            <input
+              type="password"
+              id="login-password"
+              name="password"
+              required
+            />
+          </div>
+          <div class="input-group login-group">
+            <label for="is-manager">System Manager Log-in</label>
+            <input type="checkbox" id="is-manager" />
+          </div>
+          <div class="incorrect-info-login"></div>
+          <button type="submit" class="auth-btn">Login</button>
+        </form>
+      </div>
+
+      <!-- Sign Up Form -->
+      <div id="signup-form" class="form hidden">
+        <h2>Sign Up</h2>
+        <form action="welcome.html" method="POST">
+          <div class="input-group">
+            <label for="signup-username">Name/Surname</label>
+            <input type="text" id="signup-username" name="username" required />
+          </div>
+          <div class="input-group">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" name="email" required />
+          </div>
+          <div class="input-group">
+            <label for="signup-phone">Phone Number</label>
+            <input type="tel" id="signup-phone" name="phone" placeholder="e.g. 0532 123 4567" />
+          </div>
+          <div class="input-group">
+            <label for="signup-dob">Date of Birth</label>
+            <input type="date" id="signup-dob" name="dob" />
+          </div>
+          <div class="input-group">
+            <label for="signup-password">Password</label>
+            <input
+              type="password"
+              id="signup-password"
+              name="password"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="signup-confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="signup-confirm-password"
+              name="confirm-password"
+              required
+            />
+          </div>
+          <div class="incorrect-info-signup"></div>
+          <button type="submit" class="auth-btn">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="scripts/login.js"></script>
+  </body>
+</html>

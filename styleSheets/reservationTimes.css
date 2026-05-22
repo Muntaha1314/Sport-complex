@@ -1,0 +1,162 @@
+/* reservationTimes.css */
+
+.page-desc {
+  color: #555;
+  font-size: 0.92rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Date picker */
+.date-picker-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  background: #fff;
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+.date-picker-row label {
+  font-weight: 600;
+  color: #1e3a5f;
+  font-size: 0.92rem;
+}
+.date-picker-row input[type="date"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+.date-status {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.status-open { color: #2e7d32; }
+.status-closed { color: #c62828; }
+
+/* Info boxes */
+.info-box {
+  padding: 14px 18px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 0.92rem;
+}
+.info-box.warning {
+  background: #fdecea;
+  border-left: 4px solid #e53935;
+  color: #7a1a1a;
+}
+.hidden { display: none !important; }
+
+/* Sports sections */
+.sports-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sport-section {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+
+.sport-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  color: #fff;
+}
+.sport-header h2 { font-size: 1.1rem; margin-bottom: 2px; }
+.sport-header p { font-size: 0.82rem; opacity: 0.9; }
+.sport-icon { font-size: 2rem; }
+
+.football-header { background: linear-gradient(135deg, #2e7d32, #43a047); }
+.swimming-header { background: linear-gradient(135deg, #1565c0, #1e88e5); }
+.tennis-header   { background: linear-gradient(135deg, #e65100, #f57c00); }
+
+/* Slots grid */
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  padding: 16px 20px;
+}
+
+.slot-card {
+  border-radius: 8px;
+  padding: 12px 10px;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.slot-time {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #1e3a5f;
+  margin-bottom: 4px;
+}
+
+.slot-price {
+  font-size: 0.82rem;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.slot-capacity {
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.slot-status {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* Available slot */
+.slot-available {
+  background: #e8f5e9;
+  border-color: #a5d6a7;
+  cursor: pointer;
+}
+.slot-available:hover {
+  border-color: #4caf50;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+.slot-add-btn {
+  margin-top: 6px;
+  padding: 5px 12px;
+  background: #1e3a5f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.slot-add-btn:hover { background: #345a8b; }
+
+/* Reserved (full) slot */
+.slot-reserved {
+  background: #f5f5f5;
+  border-color: #ddd;
+  opacity: 0.6;
+}
+.slot-reserved .slot-time { color: #999; }
+.slot-reserved .slot-status { color: #c62828; }
+
+/* In-cart slot */
+.slot-in-cart {
+  background: #fff3e0;
+  border-color: #ffb74d;
+}
+.slot-in-cart .slot-status { color: #e65100; }

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equipment Management</title>
+  <link rel="stylesheet" href="styleSheets/equipment.css" />
+</head>
+<body>
+<div class="eq-page">
+
+  <div class="eq-header">
+    <h1>Equipment Management</h1>
+    <a href="systemManager.html" class="back-link">← Back to Dashboard</a>
+  </div>
+
+  <!-- Summary row -->
+  <div class="summary-row">
+    <div class="sum-card"><div class="sum-label">Total Equipment</div><div class="sum-val" id="total-count">0</div></div>
+    <div class="sum-card"><div class="sum-label">Maintenance Cost</div><div class="sum-val" id="total-maint">0 ₺</div></div>
+    <div class="sum-card"><div class="sum-label">Repair Cost</div><div class="sum-val" id="total-repair">0 ₺</div></div>
+    <div class="sum-card sum-highlight"><div class="sum-label">Total Cost</div><div class="sum-val" id="total-all">0 ₺</div></div>
+  </div>
+
+  <!-- Add Equipment -->
+  <div class="eq-card">
+    <h2>Add New Equipment</h2>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="eq-name" placeholder="e.g. Treadmill #3" />
+      </div>
+      <div class="form-group">
+        <label>Type</label>
+        <select id="eq-type">
+          <option>Cardio</option>
+          <option>Strength</option>
+          <option>Free Weights</option>
+          <option>Flexibility</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Serial No.</label>
+        <input type="text" id="eq-serial" placeholder="e.g. TM-003" />
+      </div>
+      <div class="form-group">
+        <label>Purchase Date</label>
+        <input type="date" id="eq-purchase-date" />
+      </div>
+    </div>
+    <button id="add-equipment-btn">Add Equipment</button>
+  </div>
+
+  <!-- Equipment list -->
+  <div class="eq-card">
+    <h2>Inventory</h2>
+    <div id="equipment-list"><p class="empty-msg">No equipment added yet.</p></div>
+  </div>
+
+  <!-- Record modal -->
+  <div id="modal-overlay" class="overlay hidden"></div>
+  <div id="record-modal" class="modal hidden">
+    <div class="modal-top">
+      <h2 id="modal-title">Records</h2>
+      <button id="close-modal">✕</button>
+    </div>
+    <p id="modal-info" class="modal-info"></p>
+
+    <div class="eq-card" style="margin-bottom:16px;">
+      <h3>Add Record</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Type</label>
+          <select id="rec-type">
+            <option value="maintenance">Maintenance (at gym)</option>
+            <option value="repair">Repair (service center)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="rec-date" />
+        </div>
+        <div class="form-group">
+          <label id="rec-by-label">Performed By</label>
+          <input type="text" id="rec-by" placeholder="e.g. Ali (technician)" />
+        </div>
+        <div class="form-group">
+          <label>Cost (₺)</label>
+          <input type="number" id="rec-cost" min="0" placeholder="0" />
+        </div>
+      </div>
+      <div class="form-group" style="max-width:500px; margin-top:8px;">
+        <label>Notes</label>
+        <input type="text" id="rec-notes" placeholder="What was done?" />
+      </div>
+      <button id="save-record-btn" style="margin-top:10px;">Save Record</button>
+    </div>
+
+    <!-- Status update -->
+    <div style="margin-bottom:16px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+      <label style="font-weight:600; color:#444;">Update Status:</label>
+      <select id="status-select">
+        <option value="Operational">Operational</option>
+        <option value="Under Maintenance">Under Maintenance</option>
+        <option value="Under Repair">Under Repair (at service center)</option>
+        <option value="Out of Service">Out of Service</option>
+      </select>
+      <button id="update-status-btn">Update</button>
+    </div>
+
+    <!-- Records table -->
+    <h3>History</h3>
+    <table class="rec-table">
+      <thead>
+        <tr><th>Type</th><th>Date</th><th>Performed By</th><th>Notes</th><th>Cost</th><th></th></tr>
+      </thead>
+      <tbody id="rec-tbody"><tr><td colspan="6">No records yet.</td></tr></tbody>
+    </table>
+    <p id="rec-totals" class="rec-totals"></p>
+  </div>
+
+</div>
+<script src="scripts/equipment.js"></script>
+</body>
+</html>

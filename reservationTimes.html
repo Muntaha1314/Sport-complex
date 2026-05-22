@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservations & Times — Gym Management System</title>
+  <link rel="stylesheet" href="styleSheets/index.css" />
+  <link rel="stylesheet" href="styleSheets/reservationTimes.css" />
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-icon">🏋️</span>
+      <span class="logo-text">GymSys</span>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li class="show-after-login"><a href="profileWallet.html">Profile &amp; Wallet</a></li>
+      <li class="show-after-login"><a href="subscriptions.html">Membership Packages</a></li>
+      <li class="show-after-login"><a href="reservationTimes.html" style="background:#3b6ea5;color:#fff;">Reservations &amp; Times</a></li>
+      <li class="show-after-login"><a href="cart.html">Cart (<span class="cart-count">0</span>)</a></li>
+      <li><a href="aboutUs.html">About Us &amp; Feedback</a></li>
+      <li class="login-logout"><a href="login.html"><span class="login-logout-link">Login</span></a></li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+    <div class="page-wrap">
+      <h1>Reservations &amp; Times</h1>
+      <p class="page-desc">Select a date and book time slots for Football, Swimming, or Tennis. The complex is closed on Sundays.</p>
+
+      <!-- Date picker -->
+      <div class="date-picker-row">
+        <label for="res-date">Select Date:</label>
+        <input type="date" id="res-date" />
+        <span id="date-status" class="date-status"></span>
+      </div>
+
+      <!-- Sports sections -->
+      <div id="sports-sections" class="sports-sections hidden">
+
+        <!-- Football -->
+        <div class="sport-section">
+          <div class="sport-header football-header">
+            <span class="sport-icon">⚽</span>
+            <div>
+              <h2>Football</h2>
+              <p>1 field available per slot · 200 ₺ per hour</p>
+            </div>
+          </div>
+          <div class="slots-grid" id="football-slots"></div>
+        </div>
+
+        <!-- Swimming -->
+        <div class="sport-section">
+          <div class="sport-header swimming-header">
+            <span class="sport-icon">🏊</span>
+            <div>
+              <h2>Swimming</h2>
+              <p>Up to 40 swimmers per slot · 100 ₺ per hour</p>
+            </div>
+          </div>
+          <div class="slots-grid" id="swimming-slots"></div>
+        </div>
+
+        <!-- Tennis -->
+        <div class="sport-section">
+          <div class="sport-header tennis-header">
+            <span class="sport-icon">🎾</span>
+            <div>
+              <h2>Tennis</h2>
+              <p>1 court available per slot · 150 ₺ per hour</p>
+            </div>
+          </div>
+          <div class="slots-grid" id="tennis-slots"></div>
+        </div>
+
+      </div>
+
+      <div id="sunday-msg" class="info-box warning hidden">
+        🚫 The sports complex is <strong>closed on Sundays</strong>. Please select another date.
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+</script>
+<script type="module" src="scripts/reservationTimes.js"></script>
+</body>
+</html>

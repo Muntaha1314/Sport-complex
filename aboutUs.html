@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us — Gym Management System</title>
+    <link rel="stylesheet" href="styleSheets/index.css" />
+    <style>
+      #about-us-id { background-color: #3b6ea5; color: #fff; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+          <span class="logo-icon">🏋️</span>
+          <span class="logo-text">GymSys</span>
+        </div>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="show-after-login">
+            <a href="profileWallet.html">Profile &amp; Wallet</a>
+          </li>
+          <li class="show-after-login">
+            <a href="subscriptions.html">Membership Packages</a>
+          </li>
+          <li class="show-after-login">
+            <a href="reservationTimes.html">Reservations &amp; Times</a>
+          </li>
+          <li class="show-after-login">
+            <a href="cart.html">Cart</a>
+          </li>
+          <li><a href="#" id="about-us-id">About Us &amp; Feedback</a></li>
+          <li class="login-logout">
+            <a href="login.html"><span class="login-logout-link">Login</span></a>
+          </li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        <section class="activities">
+          <article class="activity">
+            <h1>About Our Gym</h1>
+            <h2>Welcome to GymSys — Modern Gym Management</h2>
+            <p>
+              Our gym management system is designed to make running a modern fitness center simple and efficient.
+              From membership tracking and payment management to equipment maintenance and medical report validation,
+              everything a gym manager needs is available in one place.
+            </p>
+
+            <h2>What We Manage</h2>
+            <ul>
+              <li><strong>Membership &amp; Packages:</strong> Flexible subscription plans with per-package pricing and renewal tracking.</li>
+              <li><strong>Payment Records:</strong> Every subscription generates a payment record with full history per member.</li>
+              <li><strong>Medical Fitness Reports:</strong> Certificates are tracked with automatic 1-year expiry validation.</li>
+              <li><strong>Equipment:</strong> Full inventory with maintenance and repair records, cost tracking, and status management.</li>
+              <li><strong>Budget Planning:</strong> Real-time income vs. expense summary for the manager dashboard.</li>
+            </ul>
+
+            <h2>Our Mission</h2>
+            <p>
+              We aim to provide gym operators with a clear, reliable information system that keeps member data,
+              health requirements, and facility costs organized and always up to date.
+            </p>
+
+            <div class="feedback-form">
+              <h2>Leave Your Feedback</h2>
+              <label for="feedback">Your Feedback:</label><br />
+              <textarea id="feedback" name="feedback" rows="4" cols="50" placeholder="Type your message here"></textarea><br /><br />
+              <button class="submit-btn" id="submit-feedback-btn" type="button">Submit</button>
+              <p id="feedback-confirm" style="color:green;display:none;">Thank you for your feedback!</p>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("active");
+      }
+    </script>
+    <script type="module" src="scripts/LoginUtility.js"></script>
+    <script type="module" src="scripts/aboutUs.js"></script>
+  </body>
+</html>

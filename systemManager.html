@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manager Dashboard — Gym Management System</title>
+    <link rel="stylesheet" href="styleSheets/systemManager.css" />
+    <link rel="stylesheet" href="styleSheets/sysManagerExtended.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <h1>⚙️ Manager Dashboard — Gym Management System</h1>
+      <button id="logout-btn">Logout</button>
+
+      <!-- Navigation Tabs -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="members">👥 Members</button>
+        <button class="tab-btn" data-tab="subscribers">🩺 Subscribers &amp; Medical</button>
+        <button class="tab-btn" data-tab="budget">💰 Budget &amp; Payments</button>
+        <button class="tab-btn" data-tab="equipment-tab">🔧 Equipment</button>
+        <button class="tab-btn" data-tab="reservations-tab">📅 Reservations</button>
+        <button class="tab-btn" data-tab="feedback-tab">💬 Feedback</button>
+      </div>
+
+      <!-- TAB 1: Members -->
+      <div id="tab-members" class="tab-content active">
+        <section>
+          <h2>All Registered Members</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th><th>Email</th><th>Phone</th><th>Date of Birth</th><th>Balance (₺)</th>
+              </tr>
+            </thead>
+            <tbody id="members-table">
+              <tr><td colspan="5">No members found.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <!-- TAB 2: Subscribers & Medical Reports -->
+      <div id="tab-subscribers" class="tab-content">
+        <section>
+          <h2>Subscriber Information &amp; Medical Report Status</h2>
+          <div class="filter-row">
+            <label>Medical Status:
+              <select id="medical-filter">
+                <option value="all">All</option>
+                <option value="valid">Valid</option>
+                <option value="expiring">Expiring Soon</option>
+                <option value="expired">Expired</option>
+                <option value="missing">Missing</option>
+              </select>
+            </label>
+            <label>Subscription:
+              <select id="sub-filter">
+                <option value="all">All</option>
+                <option value="active">Active</option>
+                <option value="none">Expired / None</option>
+              </select>
+            </label>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Username</th><th>Email</th><th>Package</th>
+                <th>Sub. Expires</th><th>Medical Issuer</th>
+                <th>Report Expires</th><th>Medical Status</th>
+              </tr>
+            </thead>
+            <tbody id="subscribers-body">
+              <tr><td colspan="7">No subscribers found.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <!-- TAB 3: Budget & Payments -->
+      <div id="tab-budget" class="tab-content">
+        <section>
+          <h2>Budget Overview</h2>
+          <div class="budget-summary-row">
+            <div class="budget-card card-green">
+              <div class="bcard-label">Total Income (Subscriptions + Reservations)</div>
+              <div class="bcard-value" id="budget-sub-revenue">0 ₺</div>
+            </div>
+            <div class="budget-card card-red">
+              <div class="bcard-label">Maintenance Costs</div>
+              <div class="bcard-value" id="budget-maint-costs">0 ₺</div>
+            </div>
+            <div class="budget-card card-orange">
+              <div class="bcard-label">Repair Costs</div>
+              <div class="bcard-value" id="budget-repair-costs">0 ₺</div>
+            </div>
+            <div class="budget-card card-purple">
+              <div class="bcard-label">Total Expenses</div>
+              <div class="bcard-value" id="budget-total-expenses">0 ₺</div>
+            </div>
+            <div class="budget-card card-dark">
+              <div class="bcard-label">Net Balance</div>
+              <div class="bcard-value" id="budget-net">0 ₺</div>
+            </div>
+          </div>
+
+          <h3 class="section-sub-title">Subscription Payment Log</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Member</th><th>Package</th><th>Days / Slot</th>
+                <th>Start</th><th>End</th><th>Amount</th><th>Paid On</th>
+              </tr>
+            </thead>
+            <tbody id="sub-payments-body">
+              <tr><td colspan="7">No subscription payments yet.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <!-- TAB 4: Equipment -->
+      <div id="tab-equipment-tab" class="tab-content">
+        <section>
+          <h2>Equipment Overview</h2>
+          <p style="color:#555;margin-bottom:16px;">
+            Monitor gym equipment status and cost summary. Log maintenance performed at the gym and
+            repairs sent to external service centers.
+          </p>
+          <a href="equipment.html" class="goto-equipment-btn">
+            🔧 Open Equipment Manager →
+          </a>
+          <div id="equipment-overview" style="margin-top:24px;"></div>
+        </section>
+      </div>
+
+      <!-- TAB 6: Reservations -->
+      <div id="tab-reservations-tab" class="tab-content">
+        <section>
+          <h2>All Reservations</h2>
+          <div class="filter-row">
+            <label>Sport:
+              <select id="res-sport-filter">
+                <option value="all">All Sports</option>
+                <option value="Football">Football</option>
+                <option value="Swimming">Swimming</option>
+                <option value="Tennis">Tennis</option>
+              </select>
+            </label>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Member</th><th>Email</th><th>Sport</th>
+                <th>Date</th><th>Time Slot</th><th>Amount</th><th>Confirmed On</th>
+              </tr>
+            </thead>
+            <tbody id="reservations-admin-body">
+              <tr><td colspan="7">No reservations found.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <!-- TAB 5: Feedback -->
+      <div id="tab-feedback-tab" class="tab-content">
+        <section class="feedback">
+          <h2>Member Feedback</h2>
+          <ul id="feedback-list"><li>No feedback submitted yet.</li></ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="scripts/systemManager.js"></script>
+  </body>
+</html>

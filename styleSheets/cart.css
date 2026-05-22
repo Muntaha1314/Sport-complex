@@ -1,0 +1,148 @@
+/* cart.css */
+
+.page-desc {
+  color: #555;
+  font-size: 0.92rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.info-box {
+  padding: 14px 18px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 0.92rem;
+}
+.info-box.info {
+  background: #f0f4ff;
+  border-left: 4px solid #1565c0;
+  color: #1e3a5f;
+}
+.info-box.info a { color: #1565c0; }
+.hidden { display: none !important; }
+
+/* Cart table */
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+.cart-table th {
+  background: #1e3a5f;
+  color: #fff;
+  padding: 10px 14px;
+  text-align: center;
+}
+.cart-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+  text-align: center;
+}
+.cart-table tr:hover td { background: #f5f7ff; }
+
+.remove-btn {
+  padding: 5px 12px;
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.remove-btn:hover { background: #c62828; }
+
+/* Cart summary */
+.cart-summary {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 18px 22px;
+  max-width: 400px;
+  margin-left: auto;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+.summary-total {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #1e3a5f;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+.balance-warning {
+  background: #fff8e1;
+  border-left: 3px solid #f0a500;
+  color: #7a5200;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-top: 10px;
+}
+.balance-warning a { color: #1e3a5f; }
+
+.cart-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.confirm-btn {
+  flex: 1;
+  padding: 10px 20px;
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: bold;
+}
+.confirm-btn:hover { background: #388e3c; }
+.confirm-btn.btn-disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.clear-btn {
+  padding: 10px 16px;
+  background: #eee;
+  color: #555;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.88rem;
+}
+.clear-btn:hover { background: #ddd; }
+
+/* Reservation history */
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.history-table th {
+  background: #1e3a5f;
+  color: #fff;
+  padding: 9px 12px;
+  text-align: center;
+}
+.history-table td {
+  padding: 9px 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+  background: #fff;
+}
+.history-table tr:nth-child(even) td { background: #f7f9fc; }
+
+.status-confirmed { color: #2e7d32; font-weight: bold; }
+.status-completed { color: #1565c0; font-weight: bold; }
